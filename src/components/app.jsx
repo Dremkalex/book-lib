@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import books from './books'; // массив с книгами
-import SearchBar from './search-bar'
+import books from './books'; // sourse books array
+import v4 from 'uuid/v4'; // unique id generator
+import SearchBar from './search-bar';
+import BookEditor from './book-editor';
 import BookList from './book-list';
 import { getVisibleBooks } from '../services/selectors';
 
@@ -22,6 +24,20 @@ export default class App extends Component {
     }))
   };
 
+  addBook = (newBook) => {
+    const book = {
+      id: v4(),
+      ...newBook,
+    };
+
+    this.setState(prevState => ({
+      books: [
+        book,
+        ...prevState.books
+      ], 
+    }));
+  };
+
   render() {
     const { books, filter } = this.state;
     const visibleBooks = getVisibleBooks(books, filter);
@@ -29,6 +45,7 @@ export default class App extends Component {
     return (
       <div>
         <SearchBar value={ filter } onChange={ this.changeFilter } />
+        <BookEditor onSubmit={ this.addBook }/>
         <BookList books={ visibleBooks } onDelete={ this.deleteBook} />
       </div>      
     );

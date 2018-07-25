@@ -2,9 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './book';
 
+//Временные стили
+const styles = {
+  li: {
+    margin: '8px',
+    padding: '8px',
+    listStyleType: 'none',
+    border: '1px solid #000',
+  }
+}
+
 const BookList = ({ books, onDelete }) => (  
-  <ul>{books.map(book => 
-    <li key={ book.id }>
+  <ul style={ {paddingLeft: 0, width: '50%'} }>{books.map(book => 
+    <li key={ book.id } style={ styles.li }>
       <Book {...book} onDelete={ () => onDelete(book.id)} />
     </li>)}
   </ul>
