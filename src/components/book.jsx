@@ -1,4 +1,5 @@
 import React from 'react';
+import TrashIcon from './trash-icon';
 
 const Book = ({ img, title, author, descr, onDelete }) => (
   <div>
@@ -6,7 +7,9 @@ const Book = ({ img, title, author, descr, onDelete }) => (
     <h2>{ title }</h2>
     <h4>{ author }</h4>
     <p>{ descr }</p>
-    <button onClick={ onDelete }>Delete</button>
+    <button onClick={ onDelete }>
+      <TrashIcon />
+    </button>
   </div>
 );
 

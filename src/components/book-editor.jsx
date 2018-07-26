@@ -88,7 +88,7 @@ export default class BookEditor extends Component {
         </label>
         <label style={ styles.label }>
           Description
-          <input type="text"
+          <input type="textarea"
             value={ descr }
             name="descr"
             onChange={ this.handleChange }
