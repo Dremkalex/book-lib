@@ -1,0 +1,29 @@
+.book {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: .5rem;
+  color: #424242;
+  line-height: 1.5;
+  background-color: #fff;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.img {
+  display: block;
+  width: 12rem;
+  height: auto;
+}
+
+.button {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  border: 0;
+  background-color: inherit;
+}
+
+.content {
+  padding: .5rem;
+}

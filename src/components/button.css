@@ -1,0 +1,15 @@
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  color: #F5F5F5;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #212121;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  cursor: pointer;
+}

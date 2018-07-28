@@ -1,20 +1,17 @@
+// core
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// components
 import Book from './book';
 
-//Временные стили
-const styles = {
-  li: {
-    margin: '8px',
-    padding: '8px',
-    listStyleType: 'none',
-    border: '1px solid #000',
-  }
-}
+// styles
+import styles from './book-list.css'
+
 
 const BookList = ({ books, onDelete }) => (  
-  <ul style={ {paddingLeft: 0, width: '50%'} }>{books.map(book => 
-    <li key={ book.id } style={ styles.li }>
+  <ul className={ styles.ul } >{books.map(book => 
+    <li key={ book.id } className={ styles.li }>
       <Book {...book} onDelete={ () => onDelete(book.id)} />
     </li>)}
   </ul>

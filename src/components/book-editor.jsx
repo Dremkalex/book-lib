@@ -1,24 +1,11 @@
+// core
 import React, { Component } from 'react';
 
-//Временные стили
-const styles = {
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 300,
-    padding: 16,
-  },
-  label: {
-    marginBottom: 16,
-  },
-  input: {
-    width: '100%',
-  },
-  button: {
-    cursor: 'pointer',
-    padding: '4px 8px',
-  },
-};
+// components
+import Button from './button';
+
+// styles
+import styles from './book-editor.css'
 
 export default class BookEditor extends Component {
   state = {
@@ -31,7 +18,7 @@ export default class BookEditor extends Component {
   handleChange = (evt) => {
     const name = evt.target.name;
     this.setState({      
-      [name]: evt.target.value.trim(),
+      [name]: evt.target.value,
     });
   };
 
@@ -39,7 +26,7 @@ export default class BookEditor extends Component {
     evt.preventDefault();
 
     const newBook = this.state;
-    const isEmptyValue = Object.values(newBook).some(value => value === '');
+    const isEmptyValue = Object.values(newBook).some(value => value.trim() === '');
     
     if (isEmptyValue) {
       alert("Some required field is empty");
@@ -60,41 +47,42 @@ export default class BookEditor extends Component {
     const { title, img, author, descr } = this.state;
 
     return (
-      <form onSubmit={ this.handleSubmit } style={ styles.form }>
-        <label style={ styles.label }>
+      <form onSubmit={ this.handleSubmit } className={ styles.form } >
+        <label className={ styles.label }>
           Title
           <input 
             type="text"
             value={ title }
             name="title"
             onChange={ this.handleChange }
-            style={ styles.input } />
+            className={ styles.input } />
         </label>
-        <label style={ styles.label }>
+        <label className={ styles.label }>
           Image link
           <input type="text"
             value={ img }
             name="img"
-            onChange={ this.handleChange }
-            style={ styles.input } />
+            onChange={ this.handleChange }            
+            className={ styles.input }
+            list="https://fakeimg.pl/313x475/?text=Book&font=lobster" />
         </label>
-        <label style={ styles.label }>
+        <label className={ styles.label }>
           Author
           <input type="text"
             value={ author }
             name="author"
             onChange={ this.handleChange }
-            style={ styles.input } />
+            className={ styles.input } />
         </label>
-        <label style={ styles.label }>
+        <label className={ styles.label }>
           Description
-          <input type="textarea"
+          <textarea 
             value={ descr }
             name="descr"
             onChange={ this.handleChange }
-            style={ styles.input } />
+            className={ styles.textarea } />
         </label>
-        <button style={ styles.button }>Add book</button>
+        <Button className={ styles.button } label="Add book" />
       </form>
     )
   }
